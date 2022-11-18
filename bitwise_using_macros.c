@@ -8,10 +8,11 @@
 #define TOGGLEBIT(n,pos) (n ^= (0x1 << pos))
 #define SWAPNIBBLE(n) n = (((n & 0x0F) << 4) | ((n & 0xF0) >> 4))
 #define GETBIT(n,pos) (n &(0x1 << pos))
+#define FLIPBITS(n) (n= ~n) //x = ~x
 int main()
 {
-	int n,ch,pos;
-	printf("1.LSBcheck\n2.MSBcheck\n3.Set a bit\n4.Clear a bit\n5.Toggle a bit\n6.Swap nibble in a byte\n7.Get a bit\n");
+	int n,ch,pos,x,r;
+	printf("1.LSBcheck\n2.MSBcheck\n3.Set a bit\n4.Clear a bit\n5.Toggle a bit\n6.Swap nibble in a byte\n7.Get a bit\n8.Filp all the bits\n");
 	printf("Enter choice:");
 	scanf("%d",&ch);
 	switch(ch)
@@ -61,7 +62,11 @@ int main()
 			printf("Enter position:");
 			scanf("%d",&pos);
 			GETBIT(n,pos)?printf("Bit at %d position is 1\n",pos):printf("Bit at %d position is 0\n",pos);
-		
+		case 8:
+			printf("Enter number:");
+			scanf("%d",&n);
+			FLIPBITS(n);
+			printf("After Flipping : %d\n",n);
 		default:exit(0);
 	}
 	
